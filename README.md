@@ -134,5 +134,5 @@ Knex:warning - sqlite does not support inserting default values. Set the `useNul
 
 External Dependency Docs
 ---
-[Bookshelf.js](http://bookshelfjs.org/)
-[Knex.js](http://knexjs.org/)
+* [Bookshelf.js](http://bookshelfjs.org/)
+* [Knex.js](http://knexjs.org/)
