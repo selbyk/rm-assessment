@@ -39,7 +39,7 @@ module.exports = function htmlMinifier(html, opts) {
     return new Promise((resolve, reject) => {
         posthtml(strategies)
             .process(html /*, { sync: true }*/ )
-            .then(minifiedHtml => resolve(minifiedHtml))
-            .catch(err => reject(err));
+            .then(resolve)
+            .catch(reject);
     });
 };
