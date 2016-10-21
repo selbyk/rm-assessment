@@ -1,4 +1,5 @@
 'use strict';
+const _ = require('lodash');
 const posthtml = require('posthtml');
 
 const collectStyles = require('./strategies/combine-styles')();
@@ -14,7 +15,8 @@ const defaultOpts = {
 };
 
 module.exports = function htmlMinifier(html, opts) {
-    opts = opts || defaultOpts;
+    opts = opts || {};
+    _.defaults(opts, defaultOpts);
 
     let strategies = [
         collectStyles
