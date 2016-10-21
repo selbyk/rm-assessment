@@ -36,7 +36,7 @@ module.exports = function() {
             attrs: {
                 id: /.+/
             }
-        }, function(node) {
+        }, node => {
             if (idMap[node.attrs.id]) {
                 node.attrs.id = idMap[node.attrs.id];
             } else {
@@ -55,7 +55,7 @@ module.exports = function() {
             attrs: {
                 class: /.+/
             }
-        }, function(node) {
+        }, node => {
             // Break class attr into its classes
             let classes = node.attrs.class.split(/\s+/g);
             // Build new classAttr
@@ -76,7 +76,7 @@ module.exports = function() {
         // Replace ids and classnames in style elements
         tree.match({
             tag: 'style'
-        }, function(node) {
+        }, node => {
             node.content = node.content.map(styles => { // jshint ignore:line
                 // Replace ids
                 for (let id in idMap) {

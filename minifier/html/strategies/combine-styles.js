@@ -6,13 +6,13 @@ module.exports = function() {
 
         tree.match({
             tag: 'style'
-        }, function(node) {
+        }, node => {
             styles = styles.concat(node.content.map(sty => sty.replace(/\n^\s*/gm, '')));
         });
 
         tree.match({
             tag: 'head'
-        }, function(node) {
+        }, node => {
             var element = {
                 tag: 'style',
                 content: styles

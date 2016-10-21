@@ -24,7 +24,7 @@ describe('db', () => {
                 .catch(done);
         });
 
-        it('can be persisted', (done) => {
+        it('can be persisted', done => {
             const mail = {
                 to: chance.email(),
                 from: chance.email(),
@@ -34,13 +34,13 @@ describe('db', () => {
             };
             db.models.Mail.forge(mail)
                 .save()
-                .then(function(row) {
+                .then(row => {
                     createdIds.push(row.get('id'));
                     db.models.Mail.where({
                             id: row.get('id')
                         })
                         .fetch()
-                        .then(function(row) {
+                        .then(row => {
                             expect(mail).to.deep.equal(_.omit(row.toJSON(), ['id', 'createdAt']));
                             done();
                         })

@@ -11,7 +11,7 @@ module.exports = function() {
             attrs: {
                 class: /.+/
             }
-        }, (node) => {
+        }, node => {
             let classes = node.attrs.class.split(/\s+/g);
             for (let className of classes) {
                 if (elementClasses.indexOf(className) === -1) {
@@ -25,7 +25,7 @@ module.exports = function() {
         // add the others to styledClasses
         tree.match({
             tag: 'style'
-        }, (node) => {
+        }, node => {
             node.content = node.content.map((style) => {
                 let obj = css.parse(style);
                 for (let rule of obj.stylesheet.rules) {
@@ -67,7 +67,7 @@ module.exports = function() {
             attrs: {
                 class: /.+/
             }
-        }, (node) => {
+        }, node => {
             let classes = node.attrs.class.split(/\s+/g);
             classes = classes.filter(className => {
                 return styledClasses.indexOf(className) !== -1;

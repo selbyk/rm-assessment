@@ -26,14 +26,14 @@ function errorHandler(err, req, res) {
 }
 
 // Setup our routes
-server.get('/', function(req, res) {
+server.get('/', (req, res) => {
     res.json({
         status: 'success',
         message: 'Hello World!'
     });
 });
 
-server.post('/', function(req, res, next) {
+server.post('/', (req, res, next) => {
     const requiredKeys = ['to', 'from', 'subject', 'html'];
     if (!req.body) {
         return next('Request body is missing');

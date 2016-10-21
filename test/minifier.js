@@ -1,19 +1,11 @@
-/* globals describe: false, it: false, beforeEach: false, afterEach: false */
+/* globals describe: false, it: false */
 'use strict';
 const expect = require('chai').expect;
 
 const minifier = require('../minifier');
 
 describe('minifier', () => {
-    beforeEach((done) => {
-        done();
-    });
-
-    afterEach((done) => {
-        done();
-    });
-
-    it('removes whitespace', (done) => {
+    it('removes whitespace', done => {
         const inputHtml = `
 <component>
   <title>Super Title</title>
@@ -75,7 +67,7 @@ describe('minifier', () => {
     });
 
     describe('strategy optimizeClassNames', () => {
-        it('optimizes ids and class names', (done) => {
+        it('optimizes ids and class names', done => {
             const inputHtml = `
 <html><head><style>body {background-color: #FFF;}#title {padding: 20px;}.red {color: red;}.white {color: white;}.lead {font-weight: bold;}</style></head><body><h1 id="title" class="red">RED AT YOUR SERVICE</h1><p class="white lead">But this is white.</p></body></html>
 `;

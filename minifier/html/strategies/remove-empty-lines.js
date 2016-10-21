@@ -20,7 +20,7 @@ module.exports = function() {
     return function parse(tree) {
         tree.match({
             tag: /.+/
-        }, function(node) {
+        }, node => {
             if (Array.isArray(node.content)) {
                 node.content = node.content.filter(elementNotEmpty); //replace(/^\s*\n/gm, '');
                 node.content.map(element => {

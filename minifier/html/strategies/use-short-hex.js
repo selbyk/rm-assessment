@@ -4,7 +4,7 @@ module.exports = function() {
         // Replace hex with shorthand, if applicable
         tree.match({
             tag: 'style'
-        }, function(node) {
+        }, node => {
             node.content = node.content.map(style => {
                 return style.replace(/#(.)\1(.)\2(.)\3/g, '#$1$2$3');
             });

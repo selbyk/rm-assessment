@@ -8,7 +8,7 @@ const config = require('../config');
 const mailer = require('../mailer');
 
 describe('mailer', () => {
-    it('can send mail', (done) => {
+    it('can send mail', done => {
         const mail = {
             to: chance.email(),
             from: chance.email(),

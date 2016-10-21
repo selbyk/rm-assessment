@@ -11,21 +11,21 @@ const server = require('../server');
 describe('server', () => {
     let serverListener;
 
-    beforeEach((done) => {
+    beforeEach(done => {
         serverListener = server.listen(config.port, done);
     });
 
-    afterEach((done) => {
+    afterEach(done => {
         serverListener.close(done);
     });
 
     describe('GET /', () => {
-        it('says hello', (done) => {
+        it('says hello', done => {
             request(serverListener)
                 .get('/')
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
-                .expect(function(res) {
+                .expect(res => {
                     expect(res.body.status).to.equal('success');
                     expect(res.body.message).to.equal('Hello World!');
                 })
@@ -46,7 +46,7 @@ describe('server', () => {
                 .send(mail)
                 .set('Accept', 'application/json')
                 .expect('Content-Type', /json/)
-                .expect(function(res) {
+                .expect(res => {
                     expect(res.body.status, res.body.message).to.equal('success');
                 })
                 .expect(() => {
