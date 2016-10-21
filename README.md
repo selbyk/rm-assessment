@@ -90,40 +90,47 @@ Listening on port 3434
 
 ```bash
 $ npm dev
-[12:54 PM] selby@cecilia:> gulp
-[12:54:41] Using gulpfile ~/projects/rebelmail/gulpfile.js
-[12:54:41] Starting 'lint'...
-[12:54:41] Starting 'watch'...
-[12:54:41] Finished 'watch' after 13 ms
-[12:54:42] Finished 'lint' after 214 ms
-[12:54:42] Starting 'test'...
+[14:24:13] Using gulpfile ~/projects/rebelmail/gulpfile.js
+[14:24:13] Starting 'lint'...
+[14:24:13] Starting 'watch'...
+[14:24:13] Finished 'watch' after 13 ms
+[14:24:13] Finished 'lint' after 214 ms
+[14:24:13] Starting 'test'...
 Knex:warning - sqlite does not support inserting default values. Set the `useNullAsDefault` flag to hide this warning. (see docs http://knexjs.org/#Builder-insert).
 
 
   db
-    ✓ can create mail (64ms)
+    Mail model
+      ✓ can be persisted (65ms)
 
   mailer
     ✓ can send mail
 
   minifier
-    ✓ works
+    ✓ removes whitespace
     ✓ combines style tags and places them in <head>
-    ✓ combines style tags and places them in <head>
-    ✓ optimize ids and class names
-    ✓ remove unused classes
-    ✓ strategy useShortHex that replaces HEX with its shorthand (#FFFFFF => #FFF)
+    strategy optimizeClassNames
+      ✓ optimizes ids and class names
+    strategy removeUnusedClasses
+      ✓ removes unused CSS classes from styles and elements
+    strategy useShortHex
+      ✓ replaces HEX with its shorthand (#FFFFFF => #FFF)
 
   server
     GET /
       ✓ says hello
     POST /
-      ✓ sends email with optimized HTML to recipient (54ms)
+      ✓ sends email with optimized HTML to recipient (53ms)
 
 
-  10 passing (167ms)
+  9 passing (202ms)
 
-[12:54:42] Finished 'test' after 484 ms
-[12:54:42] Starting 'default'...
-[12:54:42] Finished 'default' after 4.67 μs
+[14:24:14] Finished 'test' after 520 ms
+[14:24:14] Starting 'default'...
+[14:24:14] Finished 'default' after 4.18 μs
 ```
+
+External Dependency Docs
+---
+[Bookshelf.js](http://bookshelfjs.org/)
+[Knex.js](http://knexjs.org/)
