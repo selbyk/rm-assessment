@@ -26,10 +26,10 @@ module.exports = function() {
         tree.match({
             tag: 'style'
         }, node => {
-            node.content = node.content.map((style) => {
+            node.content = node.content.map(style => {
                 let obj = css.parse(style);
                 for (let rule of obj.stylesheet.rules) {
-                    rule.selectors = rule.selectors.filter((selector) => { // jshint ignore:line
+                    rule.selectors = rule.selectors.filter(selector => { // jshint ignore:line
                         if (selector.length > 0 && selector.charAt(0) === '.') {
                             let className = selector.substr(1);
                             if (elementClasses.indexOf(className) === -1) {
@@ -41,7 +41,7 @@ module.exports = function() {
                         return true;
                     });
                 }
-                obj.stylesheet.rules = obj.stylesheet.rules.filter((rule) => {
+                obj.stylesheet.rules = obj.stylesheet.rules.filter(rule => {
                     if (rule.selectors.length === 0) {
                         return false;
                     }
