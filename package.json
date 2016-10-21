@@ -1,0 +1,34 @@
+{
+  "name": "rebelmail",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "gulp",
+    "test": "gulp test"
+  },
+  "author": "Selby Kendrick",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chance": "^1.0.4",
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-mocha": "^3.0.1",
+    "jshint": "^2.9.3",
+    "nodemailer-mock-transport": "^1.3.0",
+    "sqlite3": "^3.1.6",
+    "supertest": "^2.0.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "bookshelf": "^0.10.2",
+    "css": "^2.2.1",
+    "express": "^4.14.0",
+    "knex": "^0.12.6",
+    "lodash": "^4.16.4",
+    "nodemailer": "^2.6.4",
+    "posthtml": "^0.9.1"
+  }
+}
