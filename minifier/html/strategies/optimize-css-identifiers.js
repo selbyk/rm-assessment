@@ -7,16 +7,17 @@
  */
 function nextName(last) {
     last = last || '@';
+    let next;
     let code = last.charCodeAt(last.length - 1);
-    if (code === 122) {
-        last += 'A';
+    if (code >= 122) {
+        next = last + 'A';
     } else {
         if (code === 90) {
             code = 96;
         }
-        last = last.replace(/.$/, '') + String.fromCharCode(code + 1);
+        next = last.replace(/.$/, '') + String.fromCharCode(code + 1);
     }
-    return last;
+    return next;
 }
 
 module.exports = function() {
@@ -60,12 +61,20 @@ module.exports = function() {
             let classes = node.attrs.class.split(/\s+/g);
             // Build new classAttr
             let classAttr = '';
-            for (let i = 0; i < classes.length; ++i) {
-                if (classNameMap[classes[i]]) {
-                    classAttr = classAttr === '' ? classNameMap[classes[i]] : classAttr + ' ' + classNameMap[classes[i]];
+            for (let className of classes) {
+                if (classNameMap[className]) {
+                    if (classAttr === '') {
+                        classAttr = classNameMap[className];
+                    } else {
+                        classAttr = classAttr + ' ' + classNameMap[className];
+                    }
                 } else {
-                    classNameMap[classes[i]] = currentClassRename;
-                    classAttr = classAttr === '' ? currentClassRename : classAttr + ' ' + currentClassRename;
+                    classNameMap[className] = currentClassRename;
+                    if (classAttr === '') {
+                        classAttr = classNameMap[className];
+                    } else {
+                        classAttr = classAttr + ' ' + currentClassRename;
+                    }
                     currentClassRename = nextName(currentClassRename);
                 }
             }
@@ -77,7 +86,7 @@ module.exports = function() {
         tree.match({
             tag: 'style'
         }, node => {
-            node.content = node.content.map(styles => { // jshint ignore:line
+            node.content = node.content.map(styles => {
                 // Replace ids
                 for (let id in idMap) {
                     const regex = new RegExp('#' + id);

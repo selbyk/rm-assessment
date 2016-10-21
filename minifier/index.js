@@ -14,6 +14,6 @@ module.exports = function minifier(html, opts) {
     return new Promise((resolve, reject) => {
         htmlMinifer(html, opts)
             .then(result => resolve(result.html))
-            .catch(err => reject(err));
+            .catch(reject);
     });
 };
