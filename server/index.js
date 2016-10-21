@@ -54,7 +54,6 @@ server.post('/', function(req, res, next) {
             };
             mailer.sendMail(mail, err => {
                 if (err) {
-                    console.log('not here');
                     return next(err);
                 }
                 db.models.Mail

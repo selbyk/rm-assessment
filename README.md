@@ -91,12 +91,13 @@ Listening on port 3434
 
 ```bash
 $ npm dev
-[14:24:13] Using gulpfile ~/projects/rebelmail/gulpfile.js
-[14:24:13] Starting 'lint'...
-[14:24:13] Starting 'watch'...
-[14:24:13] Finished 'watch' after 13 ms
-[14:24:13] Finished 'lint' after 214 ms
-[14:24:13] Starting 'test'...
+[14:59:14] Using gulpfile ~/projects/rebelmail/gulpfile.js
+[14:59:14] Starting 'lint'...
+[14:59:14] Starting 'watch'...
+[14:59:14] Finished 'watch' after 13 ms
+[14:59:14] Finished 'lint' after 222 ms
+[14:59:14] Starting 'test'...
+Using config environment 'test'
 Knex:warning - sqlite does not support inserting default values. Set the `useNullAsDefault` flag to hide this warning. (see docs http://knexjs.org/#Builder-insert).
 
 
@@ -121,14 +122,14 @@ Knex:warning - sqlite does not support inserting default values. Set the `useNul
     GET /
       ✓ says hello
     POST /
-      ✓ sends email with optimized HTML to recipient (53ms)
+      ✓ sends email with optimized HTML to recipient (54ms)
 
 
-  9 passing (202ms)
+  9 passing (205ms)
 
-[14:24:14] Finished 'test' after 520 ms
-[14:24:14] Starting 'default'...
-[14:24:14] Finished 'default' after 4.18 μs
+[14:59:15] Finished 'test' after 527 ms
+[14:59:15] Starting 'default'...
+[14:59:15] Finished 'default' after 5.72 μs
 ```
 
 External Dependency Docs
