@@ -90,7 +90,7 @@ Listening on port 3434
   * Start gulp: `npm run dev` or `gulp`.
 
 ```bash
-$ npm dev
+$ gulp
 [14:59:14] Using gulpfile ~/projects/rebelmail/gulpfile.js
 [14:59:14] Starting 'lint'...
 [14:59:14] Starting 'watch'...
