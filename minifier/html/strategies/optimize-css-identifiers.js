@@ -41,6 +41,7 @@ module.exports = function() {
                 node.attrs.id = idMap[node.attrs.id];
             } else {
                 idMap[node.attrs.id] = currentIdRename;
+                node.attrs.id = currentIdRename;
                 currentIdRename = nextName(currentIdRename);
             }
             return node;

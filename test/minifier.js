@@ -77,11 +77,11 @@ describe('minifier', () => {
     describe('strategy optimizeClassNames', () => {
         it('optimizes ids and class names', (done) => {
             const inputHtml = `
-<html><head><style>body {background-color: #FFF;}.red {color: red;}.white {color: white;}.lead {font-weight: bold;}</style></head><body><h1 class="red">RED AT YOUR SERVICE</h1><p class="white lead">But this is white.</p></body></html>
+<html><head><style>body {background-color: #FFF;}#title {padding: 20px;}.red {color: red;}.white {color: white;}.lead {font-weight: bold;}</style></head><body><h1 id="title" class="red">RED AT YOUR SERVICE</h1><p class="white lead">But this is white.</p></body></html>
 `;
 
             const expectedOutput = `
-<html><head><style>body {background-color: #FFF;}.A {color: red;}.B {color: white;}.C {font-weight: bold;}</style></head><body><h1 class="A">RED AT YOUR SERVICE</h1><p class="B C">But this is white.</p></body></html>
+<html><head><style>body {background-color: #FFF;}#A {padding: 20px;}.A {color: red;}.B {color: white;}.C {font-weight: bold;}</style></head><body><h1 id="A" class="A">RED AT YOUR SERVICE</h1><p class="B C">But this is white.</p></body></html>
 `;
 
             const opts = {

@@ -1,5 +1,4 @@
 'use strict';
-
 const css = require('css');
 
 module.exports = function() {
