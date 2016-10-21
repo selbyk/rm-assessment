@@ -24,10 +24,7 @@ describe('minifier', () => {
 `;
 
         const expectedOutput = `
-<component>
-  <title>Super Title</title>
-  <text>Awesome Text</text>
-</component>
+<component><title>Super Title</title><text>Awesome Text</text></component>
 `;
 
         minifier(inputHtml)

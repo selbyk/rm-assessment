@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Tests whether an element isn't empty
+ * @param  {object} element object to test
+ * @return {bool}         true if element isn't empty
+ */
 function elementNotEmpty(element) {
     const type = typeof element;
     if (type === 'undefined') {
@@ -14,31 +19,18 @@ function elementNotEmpty(element) {
 module.exports = function() {
     return function parse(tree) {
         tree.match({
-            tag: 'html'
+            tag: /.+/
         }, function(node) {
-            node.content = node.content.filter(elementNotEmpty); //replace(/^\s*\n/gm, '');
-            node.content.map(element => {
-                const type = typeof element;
-                if (type === 'object' && element.content) {
-                    element.content = element.content.filter(elementNotEmpty);
-                }
-                return element;
-            });
-            return node;
-        });
-
-        tree.match({
-            tag: 'style'
-        }, function(node) {
-            node.content = node.content.filter(elementNotEmpty); //replace(/^\s*\n/gm, '');
-            node.content.map(element => {
-                const type = typeof element;
-                if (type === 'object' && element.content) {
-                    element.content = element.content.filter(elementNotEmpty);
-                }
-                return element;
-            });
-
+            if (Array.isArray(node.content)) {
+                node.content = node.content.filter(elementNotEmpty); //replace(/^\s*\n/gm, '');
+                node.content.map(element => {
+                    const type = typeof element;
+                    if (type === 'object' && element.content) {
+                        element.content = element.content.filter(elementNotEmpty);
+                    }
+                    return element;
+                });
+            }
             return node;
         });
 
