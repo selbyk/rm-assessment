@@ -1,13 +1,15 @@
 'use strict';
-const config = require('../config');
 const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 
-const mailTransporter = nodemailer.createTransport(config.nodemailer.transport);
+const config = require('../config');
 
-// Import our minifier
+// Create our mailer
+const mailer = nodemailer.createTransport(config.nodemailer.transport);
+
+// Import our orm
 const db = require('../db');
 // Import our minifier
 const minifier = require('../minifier');
@@ -56,7 +58,7 @@ server.post('/', function(req, res, next) {
                 subject: req.body.subject,
                 html: minifiedHtml,
             };
-            mailTransporter.sendMail(mail, err => {
+            mailer.sendMail(mail, err => {
                 if (err) {
                     console.log('not here');
                     return next(err);

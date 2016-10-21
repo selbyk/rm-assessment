@@ -6,7 +6,7 @@ module.exports = function() {
             tag: 'style'
         }, function(node) {
             node.content = node.content.map(style => {
-              return style.replace(/#(.)\1(.)\2(.)\3/g, '#$1$2$3');
+                return style.replace(/#(.)\1(.)\2(.)\3/g, '#$1$2$3');
             });
             return node;
         });

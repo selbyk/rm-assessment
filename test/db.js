@@ -1,6 +1,5 @@
 /* globals describe: false, it: false, afterEach: false */
 'use strict';
-process.env.NODE_ENV = 'test';
 const config = require('../config'); // jshint ignore:line
 
 const _ = require('lodash');

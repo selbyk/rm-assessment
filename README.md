@@ -35,6 +35,7 @@ Accept: application/json
   POST  HTTP/1.1
   Host: localhost:3434
   Content-Type: application/json
+  Accept: application/json
 
   {
   	"to": "teacher@some.domain",

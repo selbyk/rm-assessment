@@ -1,34 +1,34 @@
-/* globals describe: false, it: false, beforeEach: false, afterEach: false */
+/* globals describe: false, it: false */
 'use strict';
-process.env.NODE_ENV = 'test';
-
+const _ = require('lodash');
 const expect = require('chai').expect;
+const nodemailer = require('nodemailer');
+const chance = new require('chance')();
 
 const config = require('../config');
-const nodemailer = require('nodemailer');
+const mailer = nodemailer.createTransport(config.nodemailer.transport);
 
 describe('mailer', () => {
-    beforeEach((done) => {
-        done();
-    });
-
-    afterEach((done) => {
-        done();
-    });
-
     it('can send mail', (done) => {
-        const transporter = nodemailer.createTransport(config.nodemailer.transport);
+        const mail = {
+            to: chance.email(),
+            from: chance.email(),
+            subject: chance.sentence(),
+            html: chance.paragraph()
+        };
 
-        transporter.sendMail({
-            from: 'sender@address',
-            to: 'ay@ud.org',
-            subject: 'hello',
-            text: 'hello world!'
-        }, (error, info) => { // jshint ignore:line
+        mailer.sendMail(mail, (error, info) => { // jshint ignore:line
             if (error) {
                 return done(error);
             }
-            expect(config.nodemailer.transport.sentMail.length).to.equal(1);
+            let inOutbox = false;
+            for (let sent of config.nodemailer.transport.sentMail) {
+                if (_.isEqual(mail, sent.data)) {
+                    inOutbox = true;
+                    break;
+                }
+            }
+            expect(inOutbox, 'email exists in outbox').to.equal(true);
             done();
         });
     });

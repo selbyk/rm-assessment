@@ -1,13 +1,11 @@
 /* globals describe: false, it: false, beforeEach: false, afterEach: false */
 'use strict';
-process.env.NODE_ENV = 'test';
-const config = require('../config');
-
 const _ = require('lodash');
 const request = require('supertest');
 const expect = require('chai').expect;
 const chance = new require('chance')();
 
+const config = require('../config');
 const server = require('../server');
 
 describe('server', () => {

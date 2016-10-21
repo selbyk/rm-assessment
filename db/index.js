@@ -5,11 +5,11 @@ const knex = require('knex')(config.db);
 const bookshelf = require('bookshelf')(knex);
 
 const Mail = bookshelf.Model.extend({
-  tableName: 'mail'
+    tableName: 'mail'
 });
 
 bookshelf.models = {
-  Mail
+    Mail
 };
 
 module.exports = bookshelf;
