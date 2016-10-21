@@ -6,11 +6,17 @@
  * @return {bool}         true if element isn't empty
  */
 function elementNotEmpty(element) {
-    const type = typeof element;
-    if (type === 'undefined') {
+    if (!element) {
         return false;
     }
+    const type = typeof element;
     if (type === 'string' && /\n^\s*$/gm.test(element)) {
+        return false;
+    }
+    if (type === 'array' && element.length === 0) {
+        return false;
+    }
+    if (type === 'object' && element === {}) {
         return false;
     }
     return true;
@@ -22,14 +28,7 @@ module.exports = function() {
             tag: /.+/
         }, node => {
             if (Array.isArray(node.content)) {
-                node.content = node.content.filter(elementNotEmpty); //replace(/^\s*\n/gm, '');
-                node.content.map(element => {
-                    const type = typeof element;
-                    if (type === 'object' && element.content) {
-                        element.content = element.content.filter(elementNotEmpty);
-                    }
-                    return element;
-                });
+                node.content = node.content.filter(elementNotEmpty);
             }
             return node;
         });
