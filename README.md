@@ -95,15 +95,15 @@ $ gulp
 [14:59:14] Starting 'lint'...
 [14:59:14] Starting 'watch'...
 [14:59:14] Finished 'watch' after 13 ms
-[14:59:14] Finished 'lint' after 222 ms
-[14:59:14] Starting 'test'...
+[16:51:48] Finished 'lint' after 105 ms
+[16:51:48] Starting 'test'...
 Using config environment 'test'
 Knex:warning - sqlite does not support inserting default values. Set the `useNullAsDefault` flag to hide this warning. (see docs http://knexjs.org/#Builder-insert).
 
 
   db
     Mail model
-      ✓ can be persisted (65ms)
+      ✓ can be persisted (46ms)
 
   mailer
     ✓ can send mail
@@ -122,14 +122,12 @@ Knex:warning - sqlite does not support inserting default values. Set the `useNul
     GET /
       ✓ says hello
     POST /
-      ✓ sends email with optimized HTML to recipient (54ms)
+      ✓ sends email with optimized HTML to recipient (45ms)
 
 
-  9 passing (205ms)
+  9 passing (132ms)
 
-[14:59:15] Finished 'test' after 527 ms
-[14:59:15] Starting 'default'...
-[14:59:15] Finished 'default' after 5.72 μs
+[16:51:48] Finished 'test' after 247 ms
 ```
 
 External Dependency Docs
