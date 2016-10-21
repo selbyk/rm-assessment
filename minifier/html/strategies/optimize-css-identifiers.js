@@ -7,17 +7,15 @@
  */
 function nextName(last) {
     last = last || '@';
-    let next;
     let code = last.charCodeAt(last.length - 1);
     if (code >= 122) {
-        next = last + 'A';
+        return last + 'A';
     } else {
         if (code === 90) {
             code = 96;
         }
-        next = last.replace(/.$/, '') + String.fromCharCode(code + 1);
+        return last.replace(/.$/, '') + String.fromCharCode(code + 1);
     }
-    return next;
 }
 
 module.exports = function() {
