@@ -2,26 +2,24 @@
 const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
 
 const config = require('../config');
-
-// Create our mailer
-const mailer = nodemailer.createTransport(config.nodemailer.transport);
-
-// Import our orm
-const db = require('../db');
-// Import our minifier
 const minifier = require('../minifier');
+const mailer = require('../mailer');
+const db = require('../db');
 
-// Create a server with a host and port
+// Create and configure our exoress server
 const server = express();
-
-// Configure server
 server.use(bodyParser.json()); // for parsing application/json
 
+/**
+ * Express error handler that responses with an error message
+ * @param  {Error} err an error
+ * @param  {Request} req Express Request object
+ * @param  {Response} res Express Response object
+ */
 function errorHandler(err, req, res) {
-    return res.status(500).json({
+    res.status(500).json({
         status: 'error',
         message: err.message || err
     });
@@ -46,11 +44,7 @@ server.post('/', function(req, res, next) {
         }
     }
 
-    const opts = {
-        optimizeClassNames: true
-    };
-
-    minifier(req.body.html, opts)
+    minifier(req.body.html, config.minifyStrategies)
         .then(minifiedHtml => {
             const mail = {
                 to: req.body.to,

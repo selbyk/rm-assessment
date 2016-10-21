@@ -6,7 +6,7 @@ const nodemailer = require('nodemailer');
 const chance = new require('chance')();
 
 const config = require('../config');
-const mailer = nodemailer.createTransport(config.nodemailer.transport);
+const mailer = require('../mailer');
 
 describe('mailer', () => {
     it('can send mail', (done) => {

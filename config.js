@@ -5,7 +5,12 @@ let config = {
     port: 3434,
     logLevel: 'error',
     nodemailer: null,
-    db: null
+    db: null,
+    minifyStrategies: {
+        optimizeClassNames: true,
+        removeUnusedClasses: true,
+        useShortHex: true
+    }
 };
 
 if (process.env.NODE_ENV === 'test') {
@@ -46,6 +51,15 @@ if (!config.db) {
         connection: {
             filename: 'test.sqlite3'
         }
+    };
+}
+
+if (!config.minifyStrategies) {
+    console.log('No minifyStrategies config, falling back to testing default.');
+    config.minifyStrategies = {
+        optimizeClassNames: true,
+        removeUnusedClasses: true,
+        useShortHex: true
     };
 }
 
